@@ -3,7 +3,13 @@ import pandas as pd
 
 app = Flask(__name__)
 
+studentsData = pd.read_csv("./students_data_full_class.csv")
+studentsData = studentsData.drop(columns=['ssc_p', 'ssc_b', 'hsc_b', 'hsc_p', 'hsc_s', 'etest_p', 'mba_p'])
+
 @app.route("/")
 def home():
-    studentsData = pd.read_csv("./students_data_full_class.csv")
     return render_template('home.html')
+
+@app.route("/full-data")
+def full_data():    
+    return render_template('full_data.html', tables=[studentsData.to_html(classes='data', header=True)])

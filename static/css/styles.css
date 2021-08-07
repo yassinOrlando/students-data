@@ -1,21 +1,32 @@
-body{
-    height: 100vh;
+body {
+  height: 100vh;
 }
 
-h1, h2{
-    text-align: center;
+h1,
+h2 {
+  text-align: center;
 }
 
-.content{
-    min-height: 100%;
-    background-color: aqua;
-    width: 90%;
-    margin: 0 auto;
+.content {
+  min-height: 100%;
+  width: 100%;
 }
 
-#footer{
-    background-color: #444;
-    color: white;
-    padding: 10px;
-    text-align: center;
+.content .card {
+  width: 90%;
+  margin: 0 auto;
+}
+
+#table-container{
+    width: 100%;
+    overflow: scroll;
+    height: fit-content;
+}
+
+#footer {
+  background-color: #444;
+  color: white;
+  padding: 10px;
+  margin-top: 15px;
+  text-align: center;
 }

@@ -21,18 +21,22 @@
             <label for="bmenub" class="burger pseudo button">menu</label>
 
             <div class="menu">
-                <a href="#" class="pseudo button icon-picture">Demo</a>
-                <a href="#" class="button icon-puzzle">Plugins</a>
+                <a href="{{ url_for('home') }}" class="pseudo button">Home</a>
+                <a href="#" class="success button">Graphs</a>
+                <a href="{{ url_for('full_data') }}" class="button">Full data</a>
             </div>
         </nav>
     </div>
 
     <section class="content">
-        <header>
-            <h1> {% block header %}{% endblock %} </h1>
-        </header>
-
-        {% block content %}{% endblock %}
+        <article class="card">
+            <header>
+                <h1> {% block header %}{% endblock %} </h1>
+            </header>
+            <footer>
+                {% block content %}{% endblock %}
+            </footer>
+        </article>
     </section>
 
     <footer id="footer">

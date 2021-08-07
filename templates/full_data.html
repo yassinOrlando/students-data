@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block header %}
+Datos de los estudiantes
+{% endblock %}
+
+{% block content %}
+<p>
+    Aquí se encuentra
+</p>
+
+<div id="table-container">
+    {% for table in tables %}
+    {{ table|safe }}
+    {% endfor %}
+</div>
+
+{% endblock %}
