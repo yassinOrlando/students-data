@@ -14,3 +14,7 @@ def home():
 @app.route("/full-data")
 def full_data():    
     return render_template('full_data.html', tables=[studentsData.to_html(classes='data', header=True)])
+
+@app.route("/pie-chart")
+def pie_chart():
+    return render_template('graphs/pie_chart.html')
