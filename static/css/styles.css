@@ -1,0 +1,21 @@
+body{
+    height: 100vh;
+}
+
+h1, h2{
+    text-align: center;
+}
+
+.content{
+    min-height: 100%;
+    background-color: aqua;
+    width: 90%;
+    margin: 0 auto;
+}
+
+#footer{
+    background-color: #444;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}

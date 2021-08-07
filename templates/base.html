@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>{% block title %} Students data {% endblock %} - Flask </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/picnic.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div style="overflow: hidden;height: 60px;">
+        <!-- For Demo, Represents the body -->
+        <nav class="demo">
+            <a href="#" class="brand">
+                <span>Students data</span>
+            </a>
+
+            <!-- responsive-->
+            <input id="bmenub" type="checkbox" class="show">
+            <label for="bmenub" class="burger pseudo button">menu</label>
+
+            <div class="menu">
+                <a href="#" class="pseudo button icon-picture">Demo</a>
+                <a href="#" class="button icon-puzzle">Plugins</a>
+            </div>
+        </nav>
+    </div>
+
+    <section class="content">
+        <header>
+            <h1> {% block header %}{% endblock %} </h1>
+        </header>
+
+        {% block content %}{% endblock %}
+    </section>
+
+    <footer id="footer">
+        Yassín Orlando Vázquez Paz
+    </footer>
+    {% block js_script %}
+    {% endblock %}
+</body>
+
+</html>
