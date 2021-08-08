@@ -23,9 +23,19 @@ def full_data():
 def pie_chart():
     title = "Gráfica de pastel"
     # Generate the figure **without using pyplot**.
-    fig = Figure()
+    """fig = Figure()
     ax = fig.subplots()
-    ax.plot([3, 2])
+    ax.plot([3, 2])"""
+
+    # Pie chart, where the slices will be ordered and plotted counter-clockwise:
+    labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
+    sizes = [15, 30, 45, 10]
+    explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+
+    fig, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+            shadow=True, startangle=90)
+    ax1.axis('equal')
     # Save it to a temporary buffer.
     buf = BytesIO()
     fig.savefig(buf, format="png")
