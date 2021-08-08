@@ -23,17 +23,23 @@ def full_data():
 @app.route("/pie-chart")
 def pie_chart():
     title = "Gráfica de pastel"
-    # Generate the figure **without using pyplot**.
-    """fig = Figure()
-    ax = fig.subplots()
-    ax.plot([3, 2])"""
 
     # Pie chart, where the slices will be ordered and plotted counter-clockwise:
-    labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
-    sizes = [15, 30, 45, 10]
+    labels = '<$200k', '<$300k', '<$400k', '<$500k'
+
+    # Substracting only the salaries that fullfill each condition
+    pctg1 = studentsData["salary"].loc[(studentsData["salary"] >= 200000) & (studentsData["salary"] <= 300000)]
+    pctg2 = studentsData["salary"].loc[(studentsData["salary"] >= 300000) & (studentsData["salary"] <= 400000)]
+    pctg3 = studentsData["salary"].loc[(studentsData["salary"] >= 400000) & (studentsData["salary"] <= 500000)]
+    pctg4 = studentsData["salary"].loc[(studentsData["salary"] >= 500000)]
+
+    # Taking the total size of the salaries I substracted before
+    sizes = [pctg1.size, pctg2.size, pctg3.size, pctg4.size]
+
     explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
     fig, ax1 = plt.subplots()
+    ax1.title.set_text('Porcentaje de salarios anuales')
     ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
             shadow=True, startangle=90)
     ax1.axis('equal')
@@ -89,7 +95,10 @@ def ojiva_chart():
     fig = Figure()
     ax = fig.subplots()
     n, x, _ = plt.hist(studentsData["salary"], bins=20, density=True) 
-    ax.plot( x[1:], n, marker='.') 
+
+    #valores, base = np.histogram(studentsData["salary"], bins = 10)
+    #acumulativo = np.cumsum(valores)
+    ax.plot( n, x[1:], 'ro-') 
 
     ax.title.set_text('Frecuencia de salarios')
     ax.set_xlabel('Salarios anuales')
