@@ -23,12 +23,17 @@ h2 {
   height: fit-content;
 }
 
-#chart {
+#chart, #ut_logo, #gallery {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
+
+#ut_logo{
+    width: 25% !important;
+}
+
 
 #footer {
   background-color: #444;

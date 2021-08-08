@@ -1,15 +1,46 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    Bienvenido
+Bienvenido
 {% endblock %}
 
 {% block content %}
-    <p>
-        Este es un trabajo de <b> visualización de datos </b> hecho por Yassón Orlando Vázquez Paz para la Universidad Tecnológica de Tabasco
-    </p>
-    <hr>
-    <p>
-        Este sitio web fue hecho con tecnologías basadas en Python, las cuales son: Pandas y Matplotlib (para la visualización de datos), y Flask para el servidor web.
-    </p>
+<p>
+    Este es un trabajo de <b> visualización de datos </b> hecho por <b> Yassín Orlando Vázquez Paz </b> para la
+    Universidad Tecnológica de Tabasco
+</p>
+
+<img src="{{url_for('static', filename='img/uttab_logo.png')}}" alt="Uttab logo" id="ut_logo" />
+<hr>
+<p>
+    Este sitio web fue hecho con tecnologías basadas en Python, las cuales son: Pandas y Matplotlib (para la
+    visualización de datos), y Flask para el servidor web.
+    Aquí abajo encontrará una pequeña galería con imágenes de las tecnologías usadas para crear este sitio
+</p>
+
+<div class="tabs four" id="gallery">
+    <input id="tabC-1" type='radio' name='tabGroupC' checked>
+    <input id="tabC-2" type='radio' name='tabGroupC'>
+    <input id="tabC-3" type='radio' name='tabGroupC'>
+    <input id="tabC-4" type='radio' name='tabGroupC'>
+    <div class='row'>
+        <div>
+            <img src="{{url_for('static', filename='img/python_plot.png')}}">
+        </div>
+        <div>
+            <img src="{{url_for('static', filename='img/pandas.jpg')}}">
+        </div>
+        <div>
+            <img src="{{url_for('static', filename='img/tutorial_matplotlib.png')}}">
+        </div>
+        <div>
+            <img src="{{url_for('static', filename='img/flask.png')}}">
+        </div>
+    </div>
+    <label for="tabC-1"><img src="{{url_for('static', filename='img/python_plot.png')}}"></label>
+    <label for="tabC-2"><img src="{{url_for('static', filename='img/pandas.jpg')}}"></label>
+    <label for="tabC-3"><img src="{{url_for('static', filename='img/tutorial_matplotlib.png')}}"></label>
+    <label for="tabC-4"><img src="{{url_for('static', filename='img/flask.png')}}"></label>
+</div>
+
 {% endblock %}
