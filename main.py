@@ -101,7 +101,7 @@ def ojiva_chart():
 
     ax.title.set_text('Frecuencia de salarios')
     ax.set_xlabel('Salarios anuales')
-    ax.set_ylabel('Frecuencia (0 = baja, 1 = alta)')
+    ax.set_ylabel('Frecuencia')
     ax.grid()
     
     buf = BytesIO()
