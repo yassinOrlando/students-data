@@ -4,6 +4,7 @@ import base64
 from io import BytesIO
 from matplotlib.figure import Figure
 from matplotlib import pyplot as plt
+import numpy as np
 
 app = Flask(__name__)
 
@@ -65,6 +66,25 @@ def hist_chart():
 @app.route("/freq-chart")
 def freq_chart():
     title = "Polígono de frecuencias"
+
+    fig = Figure()
+    ax = fig.subplots()
+    n, x, _ = plt.hist(studentsData["salary"], bins=20, density=True) 
+    ax.plot( x[1:], n, marker='.') 
+
+    ax.title.set_text('Frecuencia de salarios')
+    ax.set_xlabel('Salarios anuales')
+    ax.set_ylabel('Frecuencia (0 = baja, 1 = alta)')
+    ax.grid()
+    
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return render_template('graphs/chart.html', title=title, img_data=data)
+
+@app.route("/ojiva-chart")
+def ojiva_chart():
+    title = "Gráfica de ojivas"
 
     fig = Figure()
     ax = fig.subplots()
