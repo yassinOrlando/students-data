@@ -39,7 +39,7 @@ def pie_chart():
     explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
     fig, ax1 = plt.subplots()
-    ax1.title.set_text('Porcentaje de salarios anuales')
+    ax1.title.set_text('Porcentaje de salarios anuales de egresados')
     ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
             shadow=True, startangle=90)
     ax1.axis('equal')
