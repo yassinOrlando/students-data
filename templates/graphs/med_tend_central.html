@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+Medidas de tendencia central
+{% endblock %}
+
+{% block content %}
+{% include 'graphs/chart_menu.html' %}
+
+<p>
+    Moda(salario): ${{moda["salary"][0]}} - {{moda["specialisation"][0]}}
+</p>
+<p>
+    Media: ${{media.salary}}
+</p>
+<p>
+    Mediana: ${{mediana.salary}}
+</p>
+{% endblock %}

@@ -17,10 +17,17 @@ h2 {
   margin: 0 auto;
 }
 
-#table-container{
-    width: 100%;
-    overflow: scroll;
-    height: fit-content;
+#table-container {
+  width: 100%;
+  overflow: scroll;
+  height: fit-content;
+}
+
+#chart {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
 }
 
 #footer {

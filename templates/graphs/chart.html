@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
 
 {% block header %}
-Gráfica de pastel
+{{title}}
 {% endblock %}
 
 {% block content %}
 {% include 'graphs/chart_menu.html' %}
 
-<p>
-    kjjn kjan kajn kaj nkja kjnaskjn adkjan sdkjn asdkj naskdj n
-</p>
+<img src='data:image/png;base64,{{img_data}}' alt="Plot chart" id="chart"/>
 {% endblock %}

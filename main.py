@@ -1,5 +1,8 @@
 from flask import Flask, render_template
 import pandas as pd
+import base64
+from io import BytesIO
+from matplotlib.figure import Figure
 
 app = Flask(__name__)
 
@@ -17,4 +20,44 @@ def full_data():
 
 @app.route("/pie-chart")
 def pie_chart():
-    return render_template('graphs/pie_chart.html')
+    title = "Gráfica de pastel"
+    # Generate the figure **without using pyplot**.
+    fig = Figure()
+    ax = fig.subplots()
+    ax.plot([3, 2])
+    # Save it to a temporary buffer.
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    # Embed the result in the html output.
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    #return f"<img src='data:image/png;base64,{data}'/>"
+    return render_template('graphs/chart.html', title=title, img_data=data)
+
+@app.route("/hist-chart")
+def hist_chart():
+    title = "Histograma"
+    
+    # Generate the figure **without using pyplot**.
+    fig = Figure()
+    ax = fig.subplots()
+    ax.hist(studentsData["salary"]) 
+    #plt.plot(bins, studentsData["salary"], '--', color ='black')
+    ax.title.set_text('Histograma de salarios')
+    ax.set_xlabel('Cantidad')
+    ax.set_ylabel('Salarios anuales')
+    
+    # Save it to a temporary buffer.
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    # Embed the result in the html output.
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    #return f"<img src='data:image/png;base64,{data}'/>"
+    return render_template('graphs/chart.html', title=title, img_data=data)
+
+@app.route("/moda-media-mediana")
+def med_tend_central():
+    dataMode = studentsData.mode(dropna=True)
+    dataMode = dataMode.head(1)
+    dataMedian = studentsData.median()
+    dataMean = studentsData.mean()
+    return render_template('graphs/med_tend_central.html', moda=dataMode, media=dataMean, mediana=dataMedian)
