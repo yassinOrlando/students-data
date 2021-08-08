@@ -30,28 +30,43 @@ def pie_chart():
     fig.savefig(buf, format="png")
     # Embed the result in the html output.
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
-    #return f"<img src='data:image/png;base64,{data}'/>"
     return render_template('graphs/chart.html', title=title, img_data=data)
 
 @app.route("/hist-chart")
 def hist_chart():
     title = "Histograma"
-    
-    # Generate the figure **without using pyplot**.
+
     fig = Figure()
     ax = fig.subplots()
-    ax.hist(studentsData["salary"]) 
+    ax.hist(studentsData["salary"], bins=20, linestyle='dashed') 
+
     #plt.plot(bins, studentsData["salary"], '--', color ='black')
     ax.title.set_text('Histograma de salarios')
-    ax.set_xlabel('Cantidad')
-    ax.set_ylabel('Salarios anuales')
+    ax.set_xlabel('Salarios anuales')
+    ax.set_ylabel('Cantidad')
+    ax.grid()
     
-    # Save it to a temporary buffer.
     buf = BytesIO()
     fig.savefig(buf, format="png")
-    # Embed the result in the html output.
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
-    #return f"<img src='data:image/png;base64,{data}'/>"
+    return render_template('graphs/chart.html', title=title, img_data=data)
+
+@app.route("/freq-chart")
+def freq_chart():
+    title = "Polígono de frecuencias"
+
+    fig = Figure()
+    ax = fig.subplots()
+    ax.plot(studentsData["salary"], marker='.') 
+
+    ax.title.set_text('Frecuencia de salarios')
+    ax.set_xlabel('Salarios anuales')
+    ax.set_ylabel('Cantidad')
+    ax.grid()
+    
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return render_template('graphs/chart.html', title=title, img_data=data)
 
 @app.route("/moda-media-mediana")
