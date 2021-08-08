@@ -58,7 +58,6 @@ def hist_chart():
     ax = fig.subplots()
     ax.hist(studentsData["salary"], bins=20) 
 
-    #plt.plot(bins, studentsData["salary"], '--', color ='black')
     ax.title.set_text('Histograma de salarios')
     ax.set_xlabel('Salarios anuales')
     ax.set_ylabel('Cantidad')
@@ -96,9 +95,9 @@ def ojiva_chart():
     ax = fig.subplots()
     n, x, _ = plt.hist(studentsData["salary"], bins=20, density=True) 
 
-    #valores, base = np.histogram(studentsData["salary"], bins = 10)
-    #acumulativo = np.cumsum(valores)
-    ax.plot( n, x[1:], 'ro-') 
+    valores, base = np.histogram(studentsData["salary"].dropna().values, bins = 12)
+    acumulativo = np.cumsum(valores)
+    ax.plot( base[:-2], valores[1:], 'ro-') 
 
     ax.title.set_text('Frecuencia de salarios')
     ax.set_xlabel('Salarios anuales')
