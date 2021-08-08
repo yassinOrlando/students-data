@@ -3,6 +3,7 @@ import pandas as pd
 import base64
 from io import BytesIO
 from matplotlib.figure import Figure
+from matplotlib import pyplot as plt
 
 app = Flask(__name__)
 
@@ -38,7 +39,7 @@ def hist_chart():
 
     fig = Figure()
     ax = fig.subplots()
-    ax.hist(studentsData["salary"], bins=20, linestyle='dashed') 
+    ax.hist(studentsData["salary"], bins=20) 
 
     #plt.plot(bins, studentsData["salary"], '--', color ='black')
     ax.title.set_text('Histograma de salarios')
@@ -57,11 +58,12 @@ def freq_chart():
 
     fig = Figure()
     ax = fig.subplots()
-    ax.plot(studentsData["salary"], marker='.') 
+    n, x, _ = plt.hist(studentsData["salary"], bins=20, density=True) 
+    ax.plot( x[1:], n, marker='.') 
 
     ax.title.set_text('Frecuencia de salarios')
     ax.set_xlabel('Salarios anuales')
-    ax.set_ylabel('Cantidad')
+    ax.set_ylabel('Frecuencia (0 = baja, 1 = alta)')
     ax.grid()
     
     buf = BytesIO()

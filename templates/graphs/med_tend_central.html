@@ -8,12 +8,12 @@ Medidas de tendencia central
 {% include 'graphs/chart_menu.html' %}
 
 <p>
-    Moda(salario): ${{moda["salary"][0]}} - {{moda["specialisation"][0]}}
+    <b>Moda(salario):</b> ${{moda["salary"][0]}} - <b> Carrera: </b> {{moda["specialisation"][0]}}
 </p>
 <p>
-    Media: ${{media.salary}}
+    <b>Media:</b> ${{media.salary}}
 </p>
 <p>
-    Mediana: ${{mediana.salary}}
+    <b>Mediana:</b> ${{mediana.salary}}
 </p>
 {% endblock %}
