@@ -93,11 +93,10 @@ def ojiva_chart():
 
     fig = Figure()
     ax = fig.subplots()
-    n, x, _ = plt.hist(studentsData["salary"], bins=20, density=True) 
 
-    valores, base = np.histogram(studentsData["salary"].dropna().values, bins = 12)
-    acumulativo = np.cumsum(valores)
-    ax.plot( base[:-2], valores[1:], 'ro-') 
+    values, base = np.histogram(studentsData["salary"].dropna().values, bins = 12)
+    
+    ax.plot( base[:-2], values[1:], 'ro-') 
 
     ax.title.set_text('Frecuencia de salarios')
     ax.set_xlabel('Salarios anuales')
